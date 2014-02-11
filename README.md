@@ -40,7 +40,7 @@ There are five example instances here in the repo, including:
 
 ### Contributing
 
-If you have a great idea for making dug.js better, just fork, and open a pull requests for discussion & development. When in doubt, open the PR early for discussion (prior to actually fully completing the feature) and once we have a chance to discuss whether it's a good idea, then go build that :sparkles:!
+If you have a great idea for making dug.js better, just fork, and [open a pull requests](pulls) for discussion & development. When in doubt, open the PR early for discussion (prior to actually fully completing the feature) and once we have a chance to discuss whether it's a good idea, then go build that :sparkles:!
 
 ### License
 

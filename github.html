@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/fonts.css" />
+    <script src="dug.js"></script>
+</head>
+<body>
+
+  <div id="github">Loading&hellip;</div>
+  <script>
+    dug({
+      endpoint: 'https://api.github.com/users/rogie',
+      target: 'github',
+      error: function(){
+        console.log('error');
+      },
+      template: '<div>\
+        <a href="{{data.url}}">\
+          <h3>{{data.login}}</h3>\
+          <img src="{{data.avatar_url}}">\
+        </a>\
+      </div>'
+    });
+  </script>
+</body>
+</html>

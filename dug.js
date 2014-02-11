@@ -1,3 +1,13 @@
+/*
+
+ @name		 Dug.js — A JSONP to HTML Script
+ @author     Rogie King <rogiek@gmail.com>
+ @version	 1.0
+ @license    WTFPL — http://en.wikipedia.org/wiki/WTFPL
+ @donate	 My paypal email is rogiek@gmail.com if you want to buy me a brew.
+
+*/
+
 var dug = function( opts ){
 
 	if(this.constructor != dug ){
@@ -42,7 +52,7 @@ var dug = function( opts ){
 					diff < 86400 && Math.floor(diff/3600) + " hours ago") ||
 				  day_diff == 1 && "Yesterday" ||
 				  day_diff < 7 && day_diff + " days ago" ||
-				  day_diff < 31 && Math.ceil(day_diff/7) + " weeks ago" ||
+				  day_diff < 31 && Math.ceil(day_diff/7) + " week" + (Math.ceil(day_diff/7) > 1? 's' : '') + " ago" ||
 				  day_diff < 365 && Math.ceil(day_diff/30) + " months ago" ||
 				  day_diff >= 365 && Math.ceil(day_diff/365) + " year" + (Math.ceil(day_diff/365)>1?"s":"") + " ago";
 		},

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="dug.js"></script>
+</head>
+<body>
+  <script>
+    dug({
+      endpoint: 'http://api.dribbble.com/players/justinmezzell/shots',
+      template: '<h1>\
+          <span>Dribbble Shots by {{shots.0.player.name}}</span> \
+        </h1>\
+        <ul>\
+        {{#shots}}\
+          <li>\
+            <a href="{{url}}" title="{{title}}">\
+              <img src="{{image_400_url}}" alt="Image of {{title}}">\
+            </a>\
+          </li>\
+        {{/shots}}\
+      </ul>'
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="dug.js"></script>
+</head>
+<body>
+  <script>
+    dug({
+      endpoint: 'http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=2eabc9d4b3a1b7443b2900a729b8b4a8&format=json&photoset_id=72157616127960344',
+      callbackParam: 'jsoncallback',
+      template: '<div>\
+          <h1>\
+            <span>Flickr</span> \
+          </h1>\
+          <ul class="photos">\
+            {{#photoset.photo}}\
+              <li>\
+                <a href="\{\{url\}\}" title="\{\{title\}\}" alt="\{\{title\}\}">\
+                  <h3>{{title}}</h3>\
+                  <img src="http://farm{{farm}}.static.flickr.com/{{server}}/{{id}}_{{secret}}_m.jpg">\
+                </a>\
+              </li>\
+            {{/photoset.photo}}\
+          </ul>\
+        </div>'
+    });
+  </script>
+</body>
+</html>

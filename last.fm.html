@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="dug.js"></script>
+</head>
+<body>
+  <div id="lastfm">Loading...</div>
+  <script>
+    dug({
+      endpoint: 'http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=komodomedia&api_key=1e4073c181a4694757f19048d0ca5228&format=json',
+      target: 'lastfm',
+      template: '<div>\
+          <h1>{{recenttracks.@attr.user}}&apos;s recent tracks</h1>\
+          {{#recenttracks}}\
+          <ul class="photos">\
+            {{#track}}\
+              <li>\
+                <a href="{{url}}">\
+                  <h3>{{name}}</h3>\
+                  <img src="{{image.2.#text}}">\
+                  <small>{{date.#text|dug.ago}}</small>\
+                </a>\
+              </li>\
+            {{/track}}\
+          </ul>\
+          {{/recenttracks}}\
+        </div>'
+    });
+  </script>
+</body>
+</html>

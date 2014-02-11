@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/fonts.css" />
+    <script src="dug.js"></script>
+</head>
+<body>
+
+  <div id="photos">Loading...</div>
+  <script>
+    dug({
+      endpoint: 'https://api.500px.com/v1/photos.jsonp?feature=user&username=garand&image_size=3&rpp=6&_method=get&sdk_key=3cece886f943df26ab3e852b15a6dfdc5d8d8ff9',
+      target: 'photos',
+      template: '<h1>\
+            <span>500px</span> \
+          </h1>\
+          <ul class="photos">\
+            {{#photos}}\
+              <li>\
+                <a href="http://500px.com/photo/{{id}}">\
+                  <h3>{{name}}</h3>\
+                  <img src="{{image_url}}">\
+                </a>\
+              </li>\
+            {{/photos}}\
+          </ul>'
+    });
+  </script>
+</body>
+</html>

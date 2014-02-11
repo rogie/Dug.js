@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="dug.js"></script>
+</head>
+<body>
+  <script>
+      dug({
+        endpoint: 'https://api.pinterest.com/v3/pidgets/boards/rogieking/my-illustration-style/pins/',
+        template: '<div>\
+            <h1>\
+              {{#data}}\
+                <span>{{board.name}} Inspiration</span>\
+              {{/data}}\
+            </h1>\
+            <ul class="pins">\
+              {{#data.pins}}\
+                <li>\
+                  <a href="http://pinterest.com/pin/{{id}}">\
+                    <img src="{{images.237x.url}}">\
+                  </a>\
+                  <p>\
+                    {{description}}\
+                  </p>\
+                </li>\
+              {{/data.pins}}\
+            </ul>\
+          </div>'
+      });
+    </script>
+</html>

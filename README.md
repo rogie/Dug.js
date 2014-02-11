@@ -30,7 +30,7 @@ There are five example instances here in the repo, including:
 
 ### Params
 
-**target**** — the id of an existing DOM element to put the html results in.
+**target** — the id of an existing DOM element to put the html results in.
 **cacheExpire** — # of milliseconds to cache data on the client side (using localstorage). 0 for no caching.
 **callbackParam** — the name of the query variable a JSONP service will use for a callback function. Most services just use 'callback=functionName', but sometimes a service will use a different query variable name.
 **success** — a function to call when JSONP data is successfully retrieved.

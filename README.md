@@ -13,6 +13,21 @@ With Dug.js, you really only need two things to pull in data from any JSONP endp
 1. The api endpoint (jsonp callbacks supported)
 2. The HTML template to display the data
 
+#### Include dug.js
+
+First step is to place [`dug.js`](dug.js) in your `/js` directory, and include is in your document `<head>` via `<script src="/js/dug.js"></script>`.
+
+#### Add render templates to your HTML
+
+Once you have included `dug.js` on your page, you can then create render templates directly in your HTML doc by simply calling the `dug` function, and including the `endpoint` param, `target` param, and a `template` param.
+
+There are five example instances here in the repo, including:
+- [500px](500px.html)
+- [Dribbble](dribbble.html)
+- [Flickr](flickr.html)
+- [Last.fm](last.fm.html)
+- [Pinterest](pinterest.html)
+
 ### Params
 
 **target**** — the id of an existing DOM element to put the html results in.

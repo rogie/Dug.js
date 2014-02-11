@@ -1,3 +1,5 @@
+![dog illustration](http://static.squarespace.com/static/51f546c1e4b007214005bd83/51f546c2e4b007214005bd8d/52f6e561e4b0e482df7b06fd/1392141497162/dug_new.png?format=1500w)
+
 # [Dug.js](http://rog.ie/blog/dugjs-a-jsonp-to-html-script)
 
 So you want to display your Dribbble shots, recent pins on Pinterest, 500px or Instagram photos, Github commits, or recently listened to music on your blog or site? Then this chunk of javascript is for you. It was designed to be a lightweight, simple, library-independent script to pull in feeds of content available on the web as JSONP (there's lots of em!) to display on your site.

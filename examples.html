@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="dug.js"></script>
+    <style>
+      img{
+        max-width: 150px;
+      }
+      a img{
+        border: 0;
+      }
+      li{
+        display: inline-block;
+        padding: 10px;
+      }
+      ul{
+        margin: 0 0 1em 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+  <script id="shots-template" type="text/x-dug-template">
+    <ul>
+      {{#shots}}
+        <li>
+          <a href="{{url}}" title="{{title}}">
+            <img src="{{image_400_url}}" alt="Image of {{title}}">
+          </a>
+          <br>
+          <time>{{created_at|dug.ago}}</time>
+        </li>
+      {{/shots}}
+    </ul>
+  </script>
+
+  <h2>Using beforeRender to modify data</h2>
+  <script>
+    dug({
+      endpoint: 'http://api.dribbble.com/players/justinmezzell/shots',
+      beforeRender: function( data ){
+        data.shots = data.shots.slice(0,4);
+      },
+      template: '#shots-template'
+    });
+  </script>
+
+  <h2>Using Error Handler</h2>
+  <div id="error-dug">Loading...</div>
+  <script>
+    dug({
+      endpoint: 'http://api.dribbble.com/badapiurl',
+      target: '#error-dug',
+      error: function( data ){
+        document.getElementById('error-dug').innerHTML = 'WHOOPS!';
+      },
+      template: '#shots-template'
+    });
+  </script>
+
+</body>
+</html>

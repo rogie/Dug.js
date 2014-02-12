@@ -27,6 +27,24 @@ var dug = function( opts ){
 			error: function(){},
 			template: 'You need a template, silly :P'
 		},
+		getTemplate = function( template ){
+			var template = template || options.template,
+				tpl;
+			if( template.match(/^(#|\.)\w/) ){
+				if( 'querySelectorAll' in document ){
+					tpl = document.querySelectorAll( template );
+					if( tpl.length > 0 ){
+						tpl = tpl[0];
+					}
+				} else {
+					tpl = document.getElementById( template.replace(/^#/,'') );
+				}
+				if( tpl && 'tagName' in tpl ){
+					template = tpl.innerHTML;
+				}
+			}
+			return template;
+		},
 		ext = function(o1,o2){
 			for(var key in o2){
 				if( key in o1 ){
@@ -99,7 +117,7 @@ var dug = function( opts ){
 					}
 					var vessel = document.createElement('div');
 					options.beforeRender.call(this,json);
-					vessel.innerHTML = render(options.template,json,options.templateDelimiters);
+					vessel.innerHTML = render( getTemplate() ,json, options.templateDelimiters);
 					if( options.target == null ){
 						script.parentNode.insertBefore(vessel,script);
 						options.target = vessel;
@@ -174,11 +192,6 @@ var dug = function( opts ){
 		   		tagMatch 	= new RegExp(delims[0] + '|' + delims[1],'ig'),
 		   		scopeName 	= m.replace(tagMatch,'');
 
-		   		//console.log( '---------------------------------');
-		   		//console.log('');
-		   		//console.log( matches, tagMatch, scopeName );
-
-
 		   	// # = scope iterator
 		   	if( scopeName[0] == '#' ){
 		   		name = scopeName.slice(1,scopeName.length);
@@ -240,7 +253,7 @@ var dug = function( opts ){
 	dug.render = render;
 	dug.extend = ext;
 	dug.cache  = cache;
-	dug.ago 	 = ago;
+	dug.ago    = ago;
 
 	init( opts );
 }

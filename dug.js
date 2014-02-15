@@ -224,8 +224,6 @@ var dug = function( opts ){
 
 		   	}
 
-                        //current value of tpl
-                        console.log('out tpl='+tpl)
 		   	//find new matches
 		   	new_matches = tpl.match(scopeMatch);
                         if (new_matches.length == matches.length) {

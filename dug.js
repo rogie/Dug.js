@@ -224,8 +224,16 @@ var dug = function( opts ){
 
 		   	}
 
+                        //current value of tpl
+                        console.log('out tpl='+tpl)
 		   	//find new matches
-		   	matches = tpl.match(scopeMatch);
+		   	new_matches = tpl.match(scopeMatch);
+                        if (new_matches.length == matches.length) {
+                            console.log('There is a problem with your template which will cause infinite loop');
+                            break;
+                        }
+                        else
+                            matches = new_matches;
 		}
 	   return tpl;
 	}
@@ -259,3 +267,4 @@ var dug = function( opts ){
 }
 //so that we can read vars
 dug._script = document.scripts[document.scripts.length-1];
+

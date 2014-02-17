@@ -149,6 +149,7 @@ var dug = function( opts ){
 
 	//private methods
 	function render( tpl, data, delims ){
+
 		tpl = unescape(tpl);
 
 		function dotData( d,dotKey ){
@@ -185,12 +186,14 @@ var dug = function( opts ){
    		}
    		var delims = delims || ['{{','}}'];
    		var scopeMatch = new RegExp(delims[0] + '[^' + delims[1] + ']*' + delims[1], 'igm' );
-	    var matches = tpl.match(scopeMatch);
+                var matches = tpl.match(scopeMatch);
 
-	   	while( matches && matches.length > 0 ){
-		   	var m 			= matches[0],
-		   		tagMatch 	= new RegExp(delims[0] + '|' + delims[1],'ig'),
-		   		scopeName 	= m.replace(tagMatch,'');
+                if (!matches)
+                    return tpl;
+
+                matches.forEach(function(m) {
+                        tagMatch 	= new RegExp(delims[0] + '|' + delims[1],'ig'),
+                        scopeName 	= m.replace(tagMatch,'');
 
 		   	// # = scope iterator
 		   	if( scopeName[0] == '#' ){
@@ -221,12 +224,8 @@ var dug = function( opts ){
 
 		   		val = dotData(data,scopeName) || '';
 		   		tpl = tpl.replace( m, val );
-
 		   	}
-
-		   	//find new matches
-		   	matches = tpl.match(scopeMatch);
-		}
+		});
 	   return tpl;
 	}
 
@@ -259,3 +258,4 @@ var dug = function( opts ){
 }
 //so that we can read vars
 dug._script = document.scripts[document.scripts.length-1];
+

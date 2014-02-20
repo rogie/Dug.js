@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="dug.js"></script>
+</head>
+<body>
+  <script>
+    dug({
+      endpoint: 'https://api.instagram.com/v1/users/1988548/media/recent/?access_token=1988548.f59def8.49157f9d3c9f43ed8aaeaee60fdf208d',
+      template: '<div>\
+          <h1>Instagram</h1>\
+          <ul class="photos">\
+            {{#data}}\
+              <li>\
+                <a href="{{link}}">\
+                  <img src="{{images.low_resolution.url}}">\
+                  <small>{{caption.text}}</small>\
+                </a>\
+              </li>\
+            {{/data}}\
+          </ul>\
+        </div>'
+    });
+  </script>
+</body>
+</html>

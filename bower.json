@@ -1,0 +1,26 @@
+{
+  "name": "dug.js",
+  "main": "dug.js",
+  "ignore": [
+    "examples/"
+  ],
+  "version": "1.0.1",
+  "homepage": "http://github.com/rogie/Dug.js",
+  "authors": [
+    "Rogie King"
+  ],
+  "description": "A JSONP to HTML script",
+  "keywords": [
+    "JSONP",
+    "HTML",
+    "API",
+    "Github",
+    "Facebook",
+    "Pinterest",
+    "Last.fm",
+    "Dribbble",
+    "500px",
+    "endpoint"
+  ],
+  "license": "WTFPL"
+}

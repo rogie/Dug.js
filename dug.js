@@ -186,14 +186,15 @@ var dug = function( opts ){
    		}
    		var delims = delims || ['{{','}}'];
    		var scopeMatch = new RegExp(delims[0] + '[^' + delims[1] + ']*' + delims[1], 'igm' );
-                var matches = tpl.match(scopeMatch);
+        var matches = tpl.match(scopeMatch);
 
-                if (!matches)
-                    return tpl;
+        if (!matches)
+        	return tpl;
 
-                matches.forEach(function(m) {
-                        tagMatch 	= new RegExp(delims[0] + '|' + delims[1],'ig'),
-                        scopeName 	= m.replace(tagMatch,'');
+       	for( var i=0, matchCount = matches.length, m; m = matches[i], i < matchCount; i++ ){
+
+            tagMatch 	= new RegExp(delims[0] + '|' + delims[1],'ig'),
+            scopeName 	= m.replace(tagMatch,'');
 
 		   	// # = scope iterator
 		   	if( scopeName[0] == '#' ){
@@ -225,7 +226,8 @@ var dug = function( opts ){
 		   		val = dotData(data,scopeName) || '';
 		   		tpl = tpl.replace( m, val );
 		   	}
-		});
+		}
+
 	   return tpl;
 	}
 

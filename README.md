@@ -24,11 +24,11 @@ First step is to place [`dug.js`](dug.js) in your `/js` directory, and include i
 Once you have included `dug.js` on your page, you can then create render templates directly in your HTML doc by simply calling the `dug` function, and including the `endpoint` param, `target` param, and a `template` param.
 
 There are five example instances here in the repo, including:
-- [500px](500px.html)
-- [Dribbble](dribbble.html)
-- [Flickr](flickr.html)
-- [Last.fm](last.fm.html)
-- [Pinterest](pinterest.html)
+- [500px](examples/500px.html)
+- [Dribbble](examples/dribbble.html)
+- [Flickr](examples/flickr.html)
+- [Last.fm](examples/last.fm.html)
+- [Pinterest](examples/pinterest.html)
 
 ### Params
 

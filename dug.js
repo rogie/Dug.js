@@ -1,10 +1,10 @@
 /*
 
- @name		 Dug.js — A JSONP to HTML Script
- @author     Rogie King <rogiek@gmail.com>
- @version	 1.0
- @license    WTFPL — http://en.wikipedia.org/wiki/WTFPL
- @donate	 My paypal email is rogiek@gmail.com if you want to buy me a brew.
+ @name		Dug.js — A JSONP to HTML Script
+ @author	Rogie King <rogiek@gmail.com>
+ @version	1.0
+ @license	WTFPL — http://en.wikipedia.org/wiki/WTFPL
+ @donate	My paypal email is rogiek@gmail.com if you want to buy me a brew.
 
 */
 
@@ -63,16 +63,16 @@ var dug = function( opts ){
 			if ( isNaN(day_diff) || day_diff < 0)
 				return;
 			return day_diff == 0 && (
-					diff < 60 && "just now" ||
-					diff < 120 && "1 minute ago" ||
-					diff < 3600 && Math.floor(diff/60) + " minutes ago" ||
-					diff < 7200 && "1 hour ago" ||
-					diff < 86400 && Math.floor(diff/3600) + " hours ago") ||
-				  day_diff == 1 && "Yesterday" ||
-				  day_diff < 7 && day_diff + " days ago" ||
-				  day_diff < 31 && Math.ceil(day_diff/7) + " week" + (Math.ceil(day_diff/7) > 1? 's' : '') + " ago" ||
-				  day_diff < 365 && Math.ceil(day_diff/30) + " months ago" ||
-				  day_diff >= 365 && Math.ceil(day_diff/365) + " year" + (Math.ceil(day_diff/365)>1?"s":"") + " ago";
+				diff < 60 && "just now" ||
+				diff < 120 && "1 minute ago" ||
+				diff < 3600 && Math.floor(diff/60) + " minutes ago" ||
+				diff < 7200 && "1 hour ago" ||
+				diff < 86400 && Math.floor(diff/3600) + " hours ago") ||
+				day_diff == 1 && "Yesterday" ||
+				day_diff < 7 && day_diff + " days ago" ||
+				day_diff < 31 && Math.ceil(day_diff/7) + " week" + (Math.ceil(day_diff/7) > 1? 's' : '') + " ago" ||
+				day_diff < 365 && Math.ceil(day_diff/30) + " months ago" ||
+				day_diff >= 365 && Math.ceil(day_diff/365) + " year" + (Math.ceil(day_diff/365)>1?"s":"") + " ago";
 		},
 		cache = function( key, json ){
 			if( (typeof localStorage !== undefined) && (typeof JSON !== undefined) ){
@@ -153,82 +153,82 @@ var dug = function( opts ){
 		tpl = unescape(tpl);
 
 		function dotData( d,dotKey ){
-   	   		var invert = '';
+			var invert = '';
 
-   	   		//run filters
-   	   		var filters = dotKey.split('|'),
-   	   			name 	= filters.shift();
+			//run filters
+			var filters = dotKey.split('|'),
+				name 	= filters.shift();
 
-   	   		if( name.indexOf("!") > -1 ){
-   	   			name = name.replace(/!/ig,'');
-   	   			invert = '!';
-   	   		}
-   	   		try{
-   	   			val = eval(invert + "d['" + name.split('.').join("']['") + "']");
-   	   			if( filters ){
-   	   				for( var i =0, max = filters.length; i < max; ++i ){
-   	   					var chunks = filters[i].split(':'),
-   	   						filter = chunks.shift(),
-   	   						params = chunks;
+			if( name.indexOf("!") > -1 ){
+				name = name.replace(/!/ig,'');
+				invert = '!';
+			}
+			try{
+				val = eval(invert + "d['" + name.split('.').join("']['") + "']");
+				if( filters ){
+					for( var i =0, max = filters.length; i < max; ++i ){
+						var chunks = filters[i].split(':'),
+							filter = chunks.shift(),
+							params = chunks;
 
-   	   					f = eval(filter);
+						f = eval(filter);
 
-	   	   				if( typeof f == 'function' ){
-	   	   					newval = f.apply(d,[val].concat(params) );
-	   	   				}
-	   	   				val = newval;
-	   	   			}
-   	   			}
-   	   		}catch(e){
-   	   			val = '';
-   	   		}
-   	   		return val;
-   		}
-   		var delims = delims || ['{{','}}'];
-   		var scopeMatch = new RegExp(delims[0] + '[^' + delims[1] + ']*' + delims[1], 'igm' );
-        var matches = tpl.match(scopeMatch);
+						if( typeof f == 'function' ){
+							newval = f.apply(d,[val].concat(params) );
+						}
+						val = newval;
+					}
+				}
+			}catch(e){
+				val = '';
+			}
+			return val;
+		}
+		var delims = delims || ['{{','}}'];
+		var scopeMatch = new RegExp(delims[0] + '[^' + delims[1] + ']*' + delims[1], 'igm' );
+		var matches = tpl.match(scopeMatch);
 
-        if (!matches)
-        	return tpl;
+		if (!matches)
+			return tpl;
 
-       	for( var i=0, matchCount = matches.length, m; m = matches[i], i < matchCount; i++ ){
+		for( var i=0, matchCount = matches.length, m; m = matches[i], i < matchCount; i++ ){
 
-            tagMatch 	= new RegExp(delims[0] + '|' + delims[1],'ig'),
-            scopeName 	= m.replace(tagMatch,'');
+			tagMatch	= new RegExp(delims[0] + '|' + delims[1],'ig'),
+			scopeName	= m.replace(tagMatch,'');
 
-		   	// # = scope iterator
-		   	if( scopeName[0] == '#' ){
-		   		name = scopeName.slice(1,scopeName.length);
-		   		startFrag 	= tpl.indexOf( m );
-		   		endFrag 	= tpl.indexOf( m.replace('#','/') ) + m.length;
-		   		frag 		= tpl.substring( startFrag + m.length , endFrag - m.length );
-		   		dataFrag    = dotData( data, name );
-		   		rendered    = '';
+			// # = scope iterator
+			if( scopeName[0] == '#' ){
+				name = scopeName.slice(1,scopeName.length);
+				startFrag	= tpl.indexOf( m );
+				endFrag		= tpl.indexOf( m.replace('#','/') ) + m.length;
+				fragment	= tpl.substring( startFrag + m.length , endFrag - m.length );
+				dataFrag	= dotData( data, name );
+				rendered	= '';
 
-		   		//loop over the scope
-		   		if( dataFrag ){
-			   		if( dataFrag.constructor == Array ){
-			   			for( var i = 0, max = dataFrag.length; i < max; ++i ){
-			   				rendered += render( frag, dataFrag[i] );
-			   			}
-			   		}else{
-			   			rendered = render( frag, dataFrag, delims );
-			   		}
-			   		//recalculate fragment position (as contents may have shifted in flight)
-			   		startFrag 	= tpl.indexOf( m );
-		   			endFrag 	= tpl.indexOf( m.replace('#','/') ) + m.length;
-			   		tpl = tpl.slice(0,startFrag) + rendered + tpl.slice(endFrag,tpl.length);
-		   		}
+				//loop over the scope
+				if( dataFrag ){
+					if( dataFrag.constructor == Array ){
+						for( var i = 0, max = dataFrag.length; i < max; ++i ){
+							rendered += render( frag, dataFrag[i] );
+						}
+					}else{
+						rendered = render( frag, dataFrag, delims );
+					}
+					//recalculate fragment position (as contents may have shifted in flight)
+					startFrag	= tpl.indexOf( m );
+					endFrag		= tpl.indexOf( m.replace('#','/') ) + m.length;
+					tpl = tpl.slice(0,startFrag) + rendered + tpl.slice(endFrag,tpl.length);
+				}
 
-		   	// regular variable
-		   	} else {
+			// regular variable
+			} else {
 
-		   		val = dotData(data,scopeName) || '';
-		   		tpl = tpl.replace( m, val );
-		   	}
+				val = dotData(data,scopeName) || '';
+				tpl = tpl.replace( m, val );
+			}
 		}
 
-	   return tpl;
+		return tpl;
 	}
 
 	//public methods (getter/setters)
@@ -251,13 +251,12 @@ var dug = function( opts ){
 	}
 
 	//utility methods
-	dug.render = render;
-	dug.extend = ext;
-	dug.cache  = cache;
-	dug.ago    = ago;
+	dug.render	= render;
+	dug.extend	= ext;
+	dug.cached	= cache;
+	dug.ago		= ago;
 
 	init( opts );
 }
 //so that we can read vars
 dug._script = document.scripts[document.scripts.length-1];
-

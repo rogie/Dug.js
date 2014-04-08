@@ -12,7 +12,7 @@
           <span>Dribbble Shots by {{shots.0.player.name}}</span> \
         </h1>\
         <ul>\
-        {{#shots}}\
+        {{#shots|dug.limit:2}}\
           <li>\
             <a href="{{url}}" title="{{title}}">\
               <img src="{{image_400_url}}" alt="Image of {{title}}">\
@@ -20,7 +20,7 @@
             <br>\
             <time>{{created_at|dug.ago}}</time>\
           </li>\
-        {{/shots}}\
+        {{/shots|dug.limit:2}}\
       </ul>'
     });
   </script>

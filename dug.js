@@ -56,6 +56,13 @@ var dug = function( opts ){
 				}
 			}
 		},
+		limit = function(array,lim){
+			if( typeof array.slice == 'function'){
+				return array.slice(0,lim);
+			}else{
+				return array;
+			}
+		},
 		ago = function(time){
 			var date = new Date((time || "")),
 				diff = (((new Date()).getTime() - date.getTime()) / 1000),
@@ -176,6 +183,7 @@ var dug = function( opts ){
 	   	   				if( typeof f == 'function' ){
 	   	   					newval = f.apply(d,[val].concat(params) );
 	   	   				}
+	   	   				console.log( 'FILTERS:', newval );
 	   	   				val = newval;
 	   	   			}
    	   			}
@@ -204,6 +212,8 @@ var dug = function( opts ){
 		   		frag 		= tpl.substring( startFrag + m.length , endFrag - m.length );
 		   		dataFrag    = dotData( data, name );
 		   		rendered    = '';
+
+		   		console.log('RETURNED FROM dotData: ',dataFrag);
 
 		   		//loop over the scope
 		   		if( dataFrag ){
@@ -255,6 +265,7 @@ var dug = function( opts ){
 	dug.extend = ext;
 	dug.cache  = cache;
 	dug.ago    = ago;
+	dug.limit  = limit;
 
 	init( opts );
 }

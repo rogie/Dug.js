@@ -29,7 +29,7 @@ There are five example instances here in the repo, including:
 - [Flickr](examples/flickr.html)
 - [Last.fm](examples/last.fm.html)
 - [Pinterest](examples/pinterest.html)
-- [Instagram](example/instagram.html)
+- [Instagram](examples/instagram.html)
 - [Rotten Tomatoes](examples/rotten-tomatoes.html)
 
 ### Params

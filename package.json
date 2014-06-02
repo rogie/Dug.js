@@ -1,0 +1,21 @@
+{
+  "name": "dug.js",
+  "version": "1.0.0",
+  "description": "A JSONP to HTML script",
+  "main": "dug.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rogie/Dug.js"
+  },
+  "author": "Rogie King",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/rogie/Dug.js/issues"
+  }
+}
